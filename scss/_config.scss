@@ -1,0 +1,72 @@
+$main-clr: #c9c9c9;
+$fonts : Arial, Helvetica, sans-serif;
+// $primary-clr :#0e6cff;
+$primary-clr :#e0ffff;
+$secondary-clr : #ff8e00;
+
+
+// set text colors based on bg
+
+@function set-text-color($color){
+    @if(lightness($color) > 70){
+        @return #333;
+    }
+    @else{
+        @return #fff;
+    }
+}
+
+
+//set bg and text color{
+
+@mixin set-bg($color){
+    background-color: $primary-clr;
+    color: set-text-color($primary-clr);
+}
+
+
+
+//margin and padding with loop
+
+$spaceamounts : (1, 2, 3, 4, 5, 6, 7);
+
+@each $space in $spaceamounts{
+    .m-#{$space} {
+        margin: #{$space}rem;
+    }
+    .mx-#{$space} {
+        margin: 0 #{$space}rem;
+    }
+    .my-#{$space} {
+        margin: #{$space}rem 0;
+    }
+    .p-#{$space} {
+        margin: #{$space}rem;
+    }
+    .px-#{$space} {
+        margin: 0 #{$space}rem;
+    }
+    .py-#{$space} {
+        margin: #{$space}rem 0;
+    }
+}
+
+
+// for mobile screen
+@media(max-width: 700px) {
+    .showcase {
+      height: 400px;
+  
+      &-content {
+        margin-top: 50px;
+        text-align: center;
+        display: block !important;
+  
+        img {
+          margin-top: 50px;
+          min-width:350px;
+          max-width: auto;
+        }
+      }
+    }
+  }
